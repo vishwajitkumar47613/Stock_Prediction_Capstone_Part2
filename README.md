@@ -9,6 +9,8 @@ The goal of this project was to establish a rigorous comparison between classica
 
 The project successfully moved beyond static splitting by implementing **Walk-Forward Validation (WFV)**, ensuring highly reliable backtested metrics. The final results demonstrate a significant finding: **the ARIMA (SARIMAX) model consistently achieved the lowest MAPE and RMSE across all four tickers, validating that robust statistical time-series methods, when paired with macro features, can significantly outperform complex deep learning models (LSTM)** on this specific short-term forecasting task.
 
+![Jupyter Notebook Link](https://github.com/vishwajitkumar47613/Stock_Prediction_Capstone_Part2/blob/main/Top_US_Stocks_prediction_Part2.ipynb)
+
 ## Overall Performance Leaderboard (Lowest MAPE is Best)
 
 | Ticker   | Model   |   RMSE |   MAPE |
