@@ -179,7 +179,7 @@ The models were evaluated using the robust WFV strategy, where the model is retr
 | AAPL     | ARIMA                      |   1.71%      |   2.88%  | 4.06%   | 19.83%    |
 | GOOG     | ARIMA                      |   1.69%      |   2.94%  | 4.08%   | 36.06%    |
 | MSFT     | ARIMA                      |   1.24%      |   2.37%  | 3.32%   | 23.54%    |
-| TSLA     | ARIMA                      |   3.62%      |   7.11%  | 3.61%   | 36.63%    |
+| TSLA     | ARIMA                      |   3.62%      |   7.11%  | 7.86%   | 36.63%    |
 
 
 
