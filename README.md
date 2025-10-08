@@ -10,6 +10,7 @@ The goal of this project was to establish a rigorous comparison between classica
 The project successfully moved beyond static splitting by implementing **Walk-Forward Validation (WFV)**, ensuring highly reliable backtested metrics. The final results demonstrate a significant finding: **the ARIMA (SARIMAX) model consistently achieved the lowest MAPE and RMSE across all four tickers, validating that robust statistical time-series methods, when paired with macro features, can significantly outperform complex deep learning models (LSTM)** on this specific short-term forecasting task.
 
 ## Overall Performance Leaderboard (Lowest MAPE is Best)
+
 | Ticker   | Model   |   RMSE |   MAPE |
 |:---------|:--------|-------:|-------:|
 | MSFT     | ARIMA   |   8.36 |   1.24 |
@@ -151,3 +152,32 @@ The predictive power of the models relies on a rich, multi-lag feature set calcu
 ![GOOG RF Feature Importance Plot](https://github.com/vishwajitkumar47613/Stock_Prediction_Capstone_Part2/blob/main/eda_plots/GOOG_rf_feature_importance.png)
 ![MSFT RF Feature Importance Plot](https://github.com/vishwajitkumar47613/Stock_Prediction_Capstone_Part2/blob/main/eda_plots/MSFT_rf_feature_importance.png)
 ![TSLA RF Feature Importance Plot](https://github.com/vishwajitkumar47613/Stock_Prediction_Capstone_Part2/blob/main/eda_plots/TSLA_rf_feature_importance.png)
+
+### Modeling and Evaluation
+The models were evaluated using the robust WFV strategy, where the model is retrained every 7 days on an expanding history to simulate live trading.
+
+ - A. Model Benchmarks and Methodologies
+
+| Model                  | Type                    | Insight Provided             | Key Enhancement over LR baseline                          |
+|:---------------------  |:--------                |:--------------------------   |:---------------------------------                         |
+| Linear Regression (LR) | Linear/Statistical      | Walk-Forward Validation (WFV)| Baseline for comparison.                                  |
+| Random Forest (RF)     | Non-Linear Ensemble     | Walk-Forward Validation (WFV)| Captures non-linear feature interactions and dependencies.|
+| ARIMA (SARIMAX)        | Statistical Time-Series | Walk-Forward Validation (WFV)| Explicitly models non-stationarity and uses macro indicators as Exogenous Variables.
+| LSTM                   | Deep Learning / Sequence| Static 80/20 Split           | Uses Stacked Bidirectional Layers and Early Stopping to model long-term sequence dependency.|
+
+- B. **Key Findings and Model Performance**
+   - **The Walk-Forward Validation** yielded strong evidence that model complexity does not guarantee better performance in financial forecasting.
+   - **The ARIMA model**, leveraging stationarity and exogenous macro features, proved superior in predicting short-term price movements across all stocks.
+   - The poor performance of the **LSTM model** suggests it was either overfitting due to its complexity or suffered from insufficient retraining (only retrained once vs. WFV models retrained dozens of times).
+   - Although **the RF model** may not be the best for MAPE, it demonstrates consistent performance across all stocks, including TSLA, which is the most volatile among them.
+   - Implementing **Walk-Forward Validation (WFV)** instead of a single 80/20 split significantly improved the MAPE score of the LR model compared to the baseline LR MAPE established in Capstone Project Part 1.
+
+| Ticker   | Best Model (Lowest MAPE)   |   ARIMA MAPE | LR  MAPE | RF MAPE | LSTM MAPE |
+|:---------|:---------------------------|--------------|---------:|--------:|----------:|
+| AAPL     | ARIMA                      |   1.71%      |   2.88%  | 4.06%   | 19.83%    |
+| GOOG     | ARIMA                      |   1.69%      |   2.94%  | 4.08%   | 36.06%    |
+| MSFT     | ARIMA                      |   1.24%      |   2.37%  | 3.32%   | 23.54%    |
+| TSLA     | ARIMA                      |   3.62%      |   7.11%  | 3.61%   | 36.63%    |
+
+
+
