@@ -158,7 +158,7 @@ The predictive power of the models relies on a rich, multi-lag feature set calcu
 ### Modeling and Evaluation
 The models were evaluated using the robust WFV strategy, where the model is retrained every 7 days on an expanding history to simulate live trading.
 
- - A. Model Benchmarks and Methodologies
+ - Model Benchmarks and Methodologies
 
 | Model                  | Type                    | Insight Provided             | Key Enhancement over LR baseline                          |
 |:---------------------  |:--------                |:--------------------------   |:---------------------------------                         |
@@ -167,7 +167,7 @@ The models were evaluated using the robust WFV strategy, where the model is retr
 | ARIMA (SARIMAX)        | Statistical Time-Series | Walk-Forward Validation (WFV)| Explicitly models non-stationarity and uses macro indicators as Exogenous Variables.
 | LSTM                   | Deep Learning / Sequence| Static 80/20 Split           | Uses Stacked Bidirectional Layers and Early Stopping to model long-term sequence dependency.|
 
-- B. **Key Findings and Model Performance**
+### Key Findings and Model Performance
    - **The Walk-Forward Validation** yielded strong evidence that model complexity does not guarantee better performance in financial forecasting.
    - **The ARIMA model**, leveraging stationarity and exogenous macro features, proved superior in predicting short-term price movements across all stocks.
    - The poor performance of the **LSTM model** suggests it was either overfitting due to its complexity or suffered from insufficient retraining (only retrained once vs. WFV models retrained dozens of times).
